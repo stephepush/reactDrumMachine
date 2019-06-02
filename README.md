@@ -1,2 +1,0 @@
-# reactDrumMachine
-Created with CodeSandbox
