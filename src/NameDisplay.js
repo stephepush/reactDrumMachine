@@ -1,14 +1,22 @@
 import React from "react";
-const displayStyle = {
+/* const displayStyle = {
   marginTop: "5%"
-};
+}; */
 
-function NameDisplay({ soundName }) {
+function NameDisplay(props) {
   return (
-    <div style={displayStyle} class="name-display">
-      <p>{soundName}</p>
+    <div /* style={displayStyle} */ className="name-display-container">
+      {props.isPowered ? (
+        <p className="name-display-container-paragraph">{props.soundName}</p>
+      ) : (
+        <p className="name-display-container-paragraph">Powered Off</p>
+      )}
     </div>
   );
 }
+
+NameDisplay.defaultProps = {
+  soundName: "Press a button!"
+};
 
 export default NameDisplay;

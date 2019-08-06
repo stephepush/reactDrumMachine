@@ -1,43 +1,64 @@
 import React from "react";
-import NameDisplay from "./NameDisplay";
+
 //import SoundData from "./SoundData";
 
-const buttonBottoms = {
+/* const buttonBottoms = {
   marginBottom: "5.5%"
-};
+}; */
 
 class SoundButton extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   audio = new Audio(this.props.clipSrc);
+
   //console.log(this.mappedSoundObjects);
 
-  playSound = () => {
-    this.audio.play();
-    this.audio.currentTime = 0;
-    this.setState({
-      sound: this.props.clipName
-    });
+  componentDidMount() {
+    document.addEventListener("keydown", this.keyboardPlaySound);
+  }
 
-    //console.log(this.props.clipName);
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.keyboardPlaySound);
+  }
+
+  playSound = event => {
+    this.props.isPowered && this.audio.play();
+
+    this.audio.currentTime = 0;
+    this.props.logSound(this.props.clipName);
+    //this.audio.volume = this.props.volumeLevel;
+  };
+
+  keyboardPlaySound = event => {
+    //console.log(e.key);
+    //console.log(this.state.lastKeyPressed);
+    if (event.key === this.props.keyLetter) {
+      this.props.isPowered && this.audio.play();
+
+      this.audio.currentTime = 0;
+      this.props.logSound(this.props.clipName);
+      //this.audio.volume = this.props.volumeLevel;
+    }
   };
 
   render() {
     return (
-      <div>
-        <button
-          style={buttonBottoms}
-          onClick={event => {
-            this.playSound();
-            this.props.logSound(this.props.clipName);
-          }}
-          className="clip myButton ui button"
-        >
-          {this.props.clipName} {this.props.key}
-        </button>
-      </div>
+      <button
+        //style={buttonBottoms}
+        isPowered={this.props.isPowered}
+        onClick={event => {
+          this.playSound();
+
+          //this.props.logSound(this.props.clipName);
+        }}
+        //onKeyDown={this.handleKeyPress}
+        onKeyDown={event => {
+          this.keyboardPlaySound();
+        }}
+        tabIndex={this.tabIndexValue}
+        //className="clip myButton ui button"
+        className="buttons"
+      >
+        {this.props.keyLetter}
+      </button>
     );
   }
 }

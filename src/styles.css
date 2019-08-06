@@ -2,34 +2,204 @@
 
 .App {
   font-family: sans-serif;
+
   text-align: center;
 }
+
 body {
-  background-color: firebrick;
+  background-color: #ddd;
 }
 
-#display {
+.App {
+  display: grid;
+  grid-template-columns: 10% 5fr 10%;
+  grid-template-rows: 85px 1fr;
+}
+
+.machine-container {
+  width: 100%;
+  margin: 0 auto;
+  height: 43%;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  display: grid;
+
+  grid-template-columns: 1fr 3fr 2fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+  background-color: #85244b;
+  border: 2px black solid;
+  border-radius: 2rem;
+}
+
+.heading {
+  color: #ffdc00;
+  font-family: VT323;
+  font-weight: 800;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.button-container {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
   display: flex;
-  align-items: center;
+  /* flex-direction: row; */
+  flex-wrap: wrap;
+
+  /* align-items: center;
   justify-content: center;
   align-content: space-between;
-  flex-wrap: wrap;
-  padding-top: 25%;
+  flex-wrap: wrap; */
 }
 
-.button {
-  margin-top: 15%;
+.buttons {
+  border: none;
+  height: 3rem;
+  font-size: 1.25rem;
+  flex-basis: 24%;
+  width: 3rem;
+  padding: 5px;
+  margin: 1%;
+  border-radius: 1.2rem;
+  background-color: white;
 }
 
-.name-display {
-  font-family: "VT323", monospace;
-  font-size: 3em;
-  width: 45%;
+.mutation-container {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+.name-display-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: 2.35rem;
+
+  width: 95%;
   border: 0.3rem solid white;
-  border-radius: 1.5rem;
+  border-radius: 1.2rem;
+}
+
+.name-display-container-paragraph {
+  color: #ffdc00;
+  font-size: 1.5em;
+  line-height: 1.5;
+  font-family: "VT323", monospace;
   margin: 0 auto;
 }
 
-.name-display > p {
-  color: goldenrod;
+/* Checkbox styling from: https://danklammer.com/articles/simple-css-toggle-switch/ */
+
+.toggle {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 3.875rem;
+  height: 2rem;
+  /*  width: 62px;
+  height: 32px; */
+  display: inline-block;
+  position: relative;
+  border-radius: 2.5rem;
+  overflow: hidden;
+
+  border: none;
+  cursor: pointer;
+  background-color: #707070;
+  transition: background-color ease 0.5s;
+}
+
+.toggle:before {
+  content: "on off";
+  display: block;
+  position: absolute;
+  z-index: 2;
+  width: 1.75rem;
+  height: 1.75rem;
+  /*   width: 28px;
+  height: 28px; */
+  background: #fff;
+  left: 2px;
+  top: 2px;
+  border-radius: 2.5rem;
+  font: 0.66rem/1.85rem Helvetica;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-indent: -1.25rem;
+  word-spacing: 2.2rem;
+  color: #fff;
+  text-shadow: -1px -1px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
+}
+
+.toggle:checked {
+  background-color: #4cd964;
+}
+
+.toggle:checked:before {
+  left: 32px;
+}
+
+/* End of checkbox styling */
+@media screen and (min-width: 1280px) {
+  .machine-container {
+    width: 60%;
+    margin: 0 auto;
+    height: 43%;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: grid;
+
+    grid-template-columns: 1fr 3fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+    background-color: #85244b;
+    border: 2px black solid;
+    border-radius: 2rem;
+  }
+}
+/* ----------- iPad 3, 4 and Pro 9.7" ----------- */
+
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+  .buttons {
+    border: none;
+    max-height: 2rem;
+    font-size: 1rem;
+    flex-basis: 27%;
+    max-width: 2rem;
+    padding: 5px;
+    margin: 1%;
+    border-radius: 1.2rem;
+  }
+
+  .name-display-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    height: 1.75rem;
+
+    width: 75%;
+    border: 0.3rem solid white;
+    border-radius: 1.2rem;
+  }
+
+  .name-display-container-paragraph {
+    color: #8c2944;
+    font-size: 1.25em;
+    line-height: 1.5;
+    font-family: "VT323", monospace;
+    margin: 0 auto;
+  }
 }
