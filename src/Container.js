@@ -1,4 +1,7 @@
 import React from "react";
+import { Helmet } from "react-helmet";
+import icon from "./icon.svg";
+
 import SoundButton from "./SoundButton";
 import SoundData from "./SoundData";
 import NameDisplay from "./NameDisplay";
@@ -67,6 +70,16 @@ class Container extends React.Component {
     ));
     return (
       <div className="machine-container">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title lang="en">Stephen's Drum Machine</title>
+          <link
+            rel="shortcut icon"
+            href={icon}
+            sizes="any"
+            type="image/svg+xml"
+          />
+        </Helmet>
         <Heading />
         <main className="button-container">{ButtonComponents}</main>
         <div className="mutation-container">
