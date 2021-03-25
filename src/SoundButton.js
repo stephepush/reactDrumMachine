@@ -30,7 +30,7 @@ class SoundButton extends React.Component {
   keyboardPlaySound = event => {
     //console.log(e.key);
     //console.log(this.state.lastKeyPressed);
-    if (event.key === this.props.keyLetter) {
+    if (this.key === this.props.keyLetter) {
       this.props.isPowered && this.audio.play();
 
       this.audio.currentTime = 0;
